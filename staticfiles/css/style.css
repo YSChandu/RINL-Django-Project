@@ -1,0 +1,12 @@
+body{
+    text-align: center;
+    background-color: whitesmoke;
+}
+div{
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+    background-color: rgb(247, 248, 248);
+    height : 350px;
+    width : 1200px;
+}
