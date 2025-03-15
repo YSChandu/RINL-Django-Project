@@ -11,10 +11,10 @@
     <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-xl md:text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-[50px] md:text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
     
-        <div class="flex space-x-4 md:space-x-7 md:pr-12 mt-4 md:mt-0">
+        <div class="flex space-x-4 md:space-x-7 pr-2 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
             <a href="{% url 'home' %}" class="text-lg text-yellow-500 underline">Home</a>
             {%else%}
