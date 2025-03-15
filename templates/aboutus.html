@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vizag Steel Plant</title>
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .brown {
+            color: #A52A2A;
+        }
+        .bg-brown {
+            background-color: #A52A2A;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="sticky top-0 flex justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+        <div class="flex items-center space-x-2">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
+            <h1 class="text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+        </div>
+    
+        <div class="flex space-x-6 mr-16">
+            {% if request.path == '/' %}
+            <a href="{% url 'home' %}" class="text-lg text-yellow-500 underline">Home</a>
+            {%else%}
+            <a href="{% url 'home' %}" class="text-lg text-zinc-500">Home</a>
+            {%endif%}
+            {% if request.path == '/products/' %}
+            <a href="{% url 'products' %}" class="text-lg text-yellow-500 underline">Products</a>
+            {%else%}
+            <a href="{% url 'products' %}" class="text-lg text-zinc-500">Products</a>
+            {%endif%}
+            {% if request.path == '/careers/' %}
+            <a href="{% url 'careers' %}" class="text-lg text-yellow-500 underline">Careers</a>
+            {%else%}
+            <a href="{% url 'careers' %}" class="text-lg text-zinc-500">Careers</a>
+            {%endif%}
+            {% if request.path == '/aboutus/' %}
+            <a href="{% url 'aboutus' %}" class="text-lg text-yellow-500 underline">AboutUs</a>
+            {%else%}
+            <a href="{% url 'aboutus' %}" class="text-lg text-zinc-500">AboutUs</a>
+            {%endif%}
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile'%}">
+                <img src="{% static 'images/profileicon.jpeg'%}" alt="Profile" class="w-8 h-8 rounded-full border-2 border-gray-300">
+            </a>
+            {% else %}
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500 animate-bounce" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+            {% endif %}
+        </div>
+    </header>
+    
+    <section class="mt-8 relative bg-cover bg-center h-[50vh] flex items-center justify-center text-white" style="background-image: url('{% static 'images/steel-plant.jpg' %}');">
+        <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-4xl font-bold fade-in">About Us</h2>
+            <p class="text-lg fade-in mt-2">We are India's leading steel producer, committed to quality and sustainability.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="mt-8 p-6">
+        <section class="container mx-auto bg-white p-8 rounded-lg shadow-lg fade-in max-w-3xl text-center">
+            <h2 class="text-2xl font-bold text-brown underline mb-4">Who We Are</h2>
+            <p class="text-gray-700 mb-4">Welcome to Vizag Steel Plant, a leading steel producer in India. Established in 1982, we are committed to producing high-quality steel products and contributing to the nation's growth.</p>
+            <p class="text-gray-700 mb-4">Our state-of-the-art facilities and dedicated workforce ensure that we meet the highest standards of quality and efficiency.</p>
+            <p class="text-gray-700">At Vizag Steel Plant, we believe in sustainable development, environmental protection, and social responsibility.</p>
+        </section>
+    </main>
+
+    <!-- Call to Action Section -->
+    <section class="bg-brown text-white py-12 text-center">
+        <h2 class="text-3xl font-bold fade-in">Join Us in Building the Future</h2>
+        <p class="text-lg fade-in mt-2">Explore our products and services.</p>
+        <a href="#" class="mt-4 inline-block bg-white text-brown px-6 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-200 transition duration-300 fade-in">
+            Learn More
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-6">
+        <p>&copy; 2025 Vizag Steel Plant. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

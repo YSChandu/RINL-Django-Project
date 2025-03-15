@@ -1,0 +1,235 @@
+header {
+    background-color: rgb(60, 120, 172);;
+    color:white;
+    padding: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 10px;
+    
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav img {
+    width: 25px; 
+    height: 25px; 
+    vertical-align: middle; 
+}
+#right{
+    float:right;
+    width: 40%;
+    height:350px;
+  
+}
+
+.signup{
+    color: rgb(249, 242, 242);
+    float: right;
+    background-color: rgb(60, 120, 172);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 10px;
+    border: none;
+}
+button{
+    color: rgb(247, 243, 243);
+    float: right;
+    margin-top: 10px;
+    background-color: rgb(60, 120, 172);
+    border-radius: 5px;
+    border: none;
+
+}
+button:hover{
+    opacity: 0.5;
+}
+
+.signup:hover{
+    opacity: 0.5;
+}
+p{
+    color: white;
+}
+.m{
+    color: white;
+}
+p{
+    color: black;
+    
+}
+img{
+    width: 80px;
+    height: 80px;
+}
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    float: left;
+    width: 100%;
+}
+h1{
+    font-weight: 500px;
+    text-align: center;
+    color: blue;
+}
+.image-container {
+    display: inline-block;
+    text-align: center;
+    margin: 40px;
+}
+
+.image-container img {
+    max-width: 80px;
+    height: 70px;
+}
+h2,h1{
+    background-color: rgb(60, 120, 172);
+    color: white;
+    padding : 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.products {
+    display :inline-block;
+    text-align: center;
+    margin: 40px;
+}
+.products img {
+    max-width: 150px;
+    height: auto;
+}
+
+
+.image-gallery {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.gallery-item {
+    flex: 0 0 calc(20% - 20px); 
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery-item img {
+    height: 100px;
+    width: 200px;
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.flip-card-container {
+
+    display:flex;
+    justify-content: center; 
+    width: 100%;
+    margin:10px;
+    padding: 10px;
+}
+
+.flip-card {
+    width: 250px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor:pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5a8dd8;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+#first {
+    float: left;
+    background-color: #5e89ad;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;  
+    text-align: center;  
+}
+#second {
+    float: right;
+    background-color: #5e89ad;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;  
+    text-align: center; 
+}
+#third {
+    float : none;
+    background-color: #5e89ad;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;  
+    text-align: center; 
+}
+
+#theory {
+    font-size: larger;
+}

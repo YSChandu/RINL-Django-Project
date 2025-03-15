@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-brown-100">
+    <div class="max-w-md mx-auto mt-10 p-6 bg-brown-200 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-brown-800 mb-6 text-center">Sign Up Below</h1>
+
+        {% for message in messages %}
+        <h5 class="text-brown-600 mb-4">{{ message }}</h5>
+        {% endfor %}
+
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-brown-700 text-sm font-bold mb-2" for="username">Username:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-brown-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" required placeholder="Enter Username"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-brown-700 text-sm font-bold mb-2" for="email">Email:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-brown-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" required placeholder="Enter Email"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-brown-700 text-sm font-bold mb-2" for="password">Password:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-brown-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" required placeholder="Enter Password"/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-brown-700 text-sm font-bold mb-2" for="password2">Repeat Password:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-brown-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password2" required placeholder="Repeat Password"/>
+            </div>
+            <div class="flex items-center justify-between">
+                <input class="bg-brown-700 hover:bg-brown-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Sign Up"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

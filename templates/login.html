@@ -1,0 +1,41 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Login Now</h1>
+        
+        {% for message in messages %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline">{{ message }}</span>
+        </div>
+        {% endfor %}
+
+        <form action="{% url 'login' %}" method="POST" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label for="username" class="block text-gray-700">Username:</label>
+                <input type="text" name="username" id="username" required placeholder="Enter Username" class="w-full p-2 border border-gray-300 rounded">
+            </div>
+            
+            <div>
+                <label for="password" class="block text-gray-700">Password:</label>
+                <input type="password" name="password" id="password" required placeholder="Enter Password" class="w-full p-2 border border-gray-300 rounded">
+            </div>
+
+            <div>
+                <input type="submit" value="Login" class="w-full bg-white border-2 text-black py-2 px-4 rounded hover:bg-yellow-400">
+            </div>
+        </form>
+        <div class="mt-4 border-2 text-center py-2 px-4">
+            <a class="bg-white  text-black hover:underline" href="{% url 'register' %}">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>

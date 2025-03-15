@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/CSS/cart.css">
+</head>
+<body>
+    <header>
+    <img class="logo" src ="/Images/logo.jpeg">
+    <h1>Visakhapatnam Steel Plant</h1>
+    </header>
+    
+    <div class="container">
+    <div id="cart">
+        <h3>Cart-items</h3>
+        <ul id="cart-items">
+        
+        </ul>
+        <button id="Additems">Add items to the cart</button>
+        <p>Total: <span id="cart-total">0.00</span></p>
+        <button id="checkout">Proceed to Buy</button>
+    </div>
+    </div>
+    <script>
+        const cartItems = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+
+        const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+
+        let total = 0;
+
+        cartData.forEach(item => {
+            const cartItem = document.createElement("li");
+            cartItem.textContent = `${item.name} - Quantity: ${item.quantity} - $${(item.quantity * item.price).toFixed(2)}`;
+            cartItems.appendChild(cartItem);
+            total += item.quantity * item.price;
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+
+        const checkoutButton = document.getElementById("checkout");
+        checkoutButton.addEventListener("click", () => {
+            if (cartData.length > 0) {
+                alert("Redirecting to the next step for payment or order confirmation.");
+            } else {
+                alert("Your cart is empty. Add some items before proceeding.");
+            }
+        });
+
+        const accessButton = document.getElementById("Additems");
+
+        accessButton.addEventListener("click", function () {
+            window.location.href = "/HTML/home_page.html";
+        });
+    </script>
+</body>
+</html>

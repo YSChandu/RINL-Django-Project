@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h2>My Profile</h2>
+    <table border="1">
+        <tr>
+            <th>Username</th>
+            <td>{{ user.user.username }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ user.user.email }}</td>
+        </tr>
+        <tr>
+            <th>User Type</th>
+            <td>{{ user.get_user_type_display }}</td>  <!-- Displays 'Admin' or 'Marketing' -->
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>{{ user.phone_no|default:"Not Provided" }}</td>
+        </tr>
+    </table>
+</body>
+</html>

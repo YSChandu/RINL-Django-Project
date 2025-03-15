@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizag Steel Plant Products</title>
+    <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <header class="sticky top-0 flex justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+        <div class="flex items-center space-x-2">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
+            <h1 class="text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+        </div>
+    
+        <div class="flex space-x-6 mr-16">
+            {% if request.path == '/' %}
+            <a href="{% url 'home' %}" class="text-lg text-yellow-500 underline">Home</a>
+            {%else%}
+            <a href="{% url 'home' %}" class="text-lg text-zinc-500">Home</a>
+            {%endif%}
+            {% if request.path == '/products/' %}
+            <a href="{% url 'products' %}" class="text-lg text-yellow-500 underline">Products</a>
+            {%else%}
+            <a href="{% url 'products' %}" class="text-lg text-zinc-500">Products</a>
+            {%endif%}
+            {% if request.path == '/careers/' %}
+            <a href="{% url 'careers' %}" class="text-lg text-yellow-500 underline">Careers</a>
+            {%else%}
+            <a href="{% url 'careers' %}" class="text-lg text-zinc-500">Careers</a>
+            {%endif%}
+            {% if request.path == '/aboutus/' %}
+            <a href="{% url 'aboutus' %}" class="text-lg text-yellow-500 underline">AboutUs</a>
+            {%else%}
+            <a href="{% url 'aboutus' %}" class="text-lg text-zinc-500">AboutUs</a>
+            {%endif%}
+            {% if user.is_authenticated %}
+            <button class="hamburger"> ☰ </button>
+            <div class="dropdown hidden flex flex-col absolute top-10 right-4 border-2 border-gray-400 text-zinc-500 rounded-xl bg-white shadow-lg">
+                <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:border hover:border-black hover:bg-gray-100">Profile</a>
+                <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
+                <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
+            </div>
+            
+            {% else %}
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+            {% endif %}
+        </div>
+    </header>
+    <script>
+        document.querySelector(".hamburger").addEventListener("click",()=>{
+            document.querySelector(".dropdown").classList.toggle("hidden");
+        });
+    </script>
+
+    <main class="mx-300 p-6">
+        <section class="bg-white p-6 mx-10">
+            <div class="container mt-12 mx-auto w-full flex flex-col lg:flex-row items-center justify-around px-6">
+                <img src="{% static 'images/rinl.jpeg'%}" alt="Steel Products" class="w-2/3 rounded-xl">
+                <p class=" !text-amber-400 text-justify w-1/3 pl-14 tracking-wider">
+                    Rashtriya Ispat Nigam Limited (RINL), the corporate entity of Visakhapatnam Steel Plant is a Navaratna PSE under the Ministry of Steel. Visakhapatnam Steel Plant fondly called Vizag Steel. It is the first shore based Integrated Steel Plant in the country and is known for its quality products delighting the customers. It is a market leader in long products and it caters to the needs of diverse Industrial sectors. It is the first Steel plant to be certified ISO 9001:2008 (presently 2015), ISO 14001:2004 (presently 2015), OHSAS 18001:2007 and ISO/IEC 27001:2013 Standards. It is also the first PSE to be certified ISO 50001:2011 - Energy Management Systems and has acquired CMMI Level 3 Certification for s/w development. Any kind of Construction Steel, Fabrication Steel and Special Steel is produced from RINL.
+                </p>
+            </div>
+            
+            <div class="mt-14 text-blue-400 space-y-4">
+                <div>
+                Rashtriya Ispat Nigam Limited
+                </div>
+                <div>
+                CIN : U27109AP1982GOI003404
+                </div>
+                <div>
+                GST Reg.No : 37AABCR0435L1ZD
+                </div>
+                <div>
+                Administrative Building,
+                </div>
+                <div>
+                Visakhapatnam Steel Plant,
+                </div>
+                <div>
+                Visakhapatnam-530026
+                </div>
+                <div>
+                Toll free number-1800 425 8878
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="mt-24">
+            <h2 class="text-2xl font-semibold text-amber-950 bg-white mb-10">Our Products</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4">
+                <div class="text-center">
+                    <img class="h-24 mx-auto" src="{% static 'images/Angles.jpg' %}" alt="Angles">
+                    <p class="mt-2">Angles</p>
+                </div>
+                <div class="text-center">
+                    <img class="h-24 mx-auto" src="{% static 'images/products.jpg' %}" alt="Billets">
+                    <p class="mt-2">Billets</p>
+                </div>
+                <div class="text-center">
+                    <img class="h-24 mx-auto" src="{% static 'images/Channels.jpg' %}" alt="Channels">
+                    <p class="mt-2">Channels</p>
+                </div>
+                <div class="text-center">
+                    <img class="h-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2">Rebars</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-amber-950 bg-white mb-10">Why RINL?</h2>
+            <div class="grid grid-rows-1 md:grid-rows-3 gap-4">
+                <div class="bg-white p-4 rounded-md ">
+                    <h3 class="font-bold text-lg">Quality Reassurance</h3>
+                    <p class="text-sm">RINL ensures high-quality standards in steel production...</p>
+                </div>
+                <div class="bg-white p-4 rounded-md ">
+                    <h3 class="font-bold text-lg">Diverse Product Range</h3>
+                    <p class="text-sm">Wide range of steel products including TMT bars...</p>
+                </div>
+                <div class="bg-white p-4 rounded-md ">
+                    <h3 class="font-bold text-lg">Reliable Supply</h3>
+                    <p class="text-sm">RINL ensures a steady supply of steel materials...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-200 text-center py-6 mt-14">
+        <p>&copy; 2024 Vizag Steel Plant | Contact: 1800 425 8878</p>
+    </footer>
+</body>
+</html>
