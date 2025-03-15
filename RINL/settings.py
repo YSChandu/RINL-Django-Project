@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-omg7peaws#sxx5r@i*v0x(n4r612fb3=w#37r8bk@3g@0nmpuy
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 
-ALLOWED_HOSTS = ["web-production-6959.up.railway.app" ,"rinl-django.up.railway.app"]
+ALLOWED_HOSTS = ["web-production-6959.up.railway.app" ,"rinl-django.up.railway.app","127.0.0.1"]
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,13 @@
     <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
 </head>
 <body class="bg-white">
-    <header class="sticky top-0 flex justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+    <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-xl md:text-3xl bg-white font-serif pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
     
-        <div class="flex space-x-6 mr-16">
+        <div class="flex space-x-7 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
             <a href="{% url 'home' %}" class="text-lg text-yellow-500 underline">Home</a>
             {%else%}
@@ -37,7 +37,7 @@
             {%endif%}
             {% if user.is_authenticated %}
             <button class="hamburger"> ☰ </button>
-            <div class="dropdown hidden flex flex-col absolute top-10 right-4 border-2 border-gray-400 text-zinc-500 rounded-xl bg-white shadow-lg">
+            <div class="dropdown hidden flex flex-col absolute top-32 right-4  md:top-10 md:right-4 border-2 border-gray-400 text-zinc-500 rounded-xl bg-white shadow-lg">
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:border hover:border-black hover:bg-gray-100">Profile</a>
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
                 <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
@@ -54,11 +54,11 @@
         });
     </script>
 
-    <main class="mx-300 p-6">
-        <section class="bg-white p-6 mx-10">
-            <div class="container mt-12 mx-auto w-full flex flex-col lg:flex-row items-center justify-around px-6">
-                <img src="{% static 'images/rinl.jpeg'%}" alt="Steel Products" class="w-2/3 rounded-xl">
-                <p class=" !text-amber-400 text-justify w-1/3 pl-14 tracking-wider">
+    <main class="mx-auto md:p-6">
+        <section class="bg-white md:p-6 md:mx-10">
+            <div class="container mt-12 md:w-full flex flex-col md:flex-row items-center justify-around px-6">
+                <img src="{% static 'images/rinl.jpeg'%}" alt="Steel Products" class="w-full  md:w-2/3 rounded-xl ">
+                <p class=" mt-4 md:mt-0 text-justify w-full md:w-1/3 md:pl-14 tracking-wider">
                     Rashtriya Ispat Nigam Limited (RINL), the corporate entity of Visakhapatnam Steel Plant is a Navaratna PSE under the Ministry of Steel. Visakhapatnam Steel Plant fondly called Vizag Steel. It is the first shore based Integrated Steel Plant in the country and is known for its quality products delighting the customers. It is a market leader in long products and it caters to the needs of diverse Industrial sectors. It is the first Steel plant to be certified ISO 9001:2008 (presently 2015), ISO 14001:2004 (presently 2015), OHSAS 18001:2007 and ISO/IEC 27001:2013 Standards. It is also the first PSE to be certified ISO 50001:2011 - Energy Management Systems and has acquired CMMI Level 3 Certification for s/w development. Any kind of Construction Steel, Fabrication Steel and Special Steel is produced from RINL.
                 </p>
             </div>
