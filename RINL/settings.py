@@ -29,6 +29,10 @@ ALLOWED_HOSTS = ["web-production-1f27d.up.railway.app" ,"rinl-django.up.railway.
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'rinl-django.up.railway.app',
+]
+
 
 # Application definition
 
