@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-omg7peaws#sxx5r@i*v0x(n4r612fb3=w#37r8bk@3g@0nmpuy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+import os
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["RINL-Django-project.up.railway.app"]
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
 
 
 # Application definition
