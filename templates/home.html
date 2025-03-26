@@ -6,32 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vizag Steel Plant Products</title>
     <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+    <style>  
+        .custom-stroke {
+            -webkit-text-stroke: 2px white;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Letter-by-letter animation */
+        @keyframes letterFade {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .letter {
+            opacity: 0;
+            display: inline-block;
+            animation: letterFade 0.2s ease-out forwards;
+        }
+    
+    </style>
 </head>
 <body class="bg-white">
-    <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+    <header class=" fade-in sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-green-950 px-6 py-4 bg-white z-10">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-[50px] md:text-3xl bg-white font-serif pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-[50px] md:text-3xl bg-white font-bold tracking-widest text-green-900 pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
     
         <div class="flex space-x-7 pr-4 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
-            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Home</a>
+            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-green-900 underline">Home</a>
             {%else%}
             <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-zinc-500">Home</a>
             {%endif%}
             {% if request.path == '/products/' %}
-            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Products</a>
+            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-green-900 underline">Products</a>
             {%else%}
             <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-zinc-500">Products</a>
             {%endif%}
             {% if request.path == '/careers/' %}
-            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Careers</a>
+            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-green-900 underline">Careers</a>
             {%else%}
             <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-zinc-500">Careers</a>
             {%endif%}
             {% if request.path == '/aboutus/' %}
-            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-yellow-500 underline">AboutUs</a>
+            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-green-900 underline">AboutUs</a>
             {%else%}
             <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-zinc-500">AboutUs</a>
             {%endif%}
@@ -42,35 +76,31 @@
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
                 <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
             </div>
-            
             {% else %}
-                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-green-700" href="{% url 'login' %}?next={{ request.path }}">Login</a>
             {% endif %}
         </div>
     </header>
-    <script>
-        document.querySelector(".hamburger").addEventListener("click",()=>{
-            document.querySelector(".dropdown").classList.toggle("hidden");
-        });
-    </script>
+    
 
-    <main class="mx-auto md:p-6">
-        <section class="bg-white md:p-6 md:mx-10">
-            <div class="container mt-12 md:w-full flex flex-col md:flex-row items-center justify-around px-6">
-                <img src="{% static 'images/rinl.jpeg'%}" alt="Steel Products" class="w-full  md:w-2/3 rounded-xl ">
-                <p class=" mt-4 md:mt-0 text-justify w-full md:w-1/3 md:pl-14 tracking-wider">
-                    Rashtriya Ispat Nigam Limited (RINL), the corporate entity of Visakhapatnam Steel Plant is a Navaratna PSE under the Ministry of Steel. Visakhapatnam Steel Plant fondly called Vizag Steel. It is the first shore based Integrated Steel Plant in the country and is known for its quality products delighting the customers. It is a market leader in long products and it caters to the needs of diverse Industrial sectors. It is the first Steel plant to be certified ISO 9001:2008 (presently 2015), ISO 14001:2004 (presently 2015), OHSAS 18001:2007 and ISO/IEC 27001:2013 Standards. It is also the first PSE to be certified ISO 50001:2011 - Energy Management Systems and has acquired CMMI Level 3 Certification for s/w development. Any kind of Construction Steel, Fabrication Steel and Special Steel is produced from RINL.
+    <main class="">
+        <section class="bg-white">
+            <div class="w-full h-96 bg-white flex items-center justify-center backdrop-blur-md">
+                 <h1 id="animatedText" class=" fade-in text-green-700 text-6xl leading-loose font-extrabold fade-in tracking-widest" >Welcome to Vizag Steel Plant</h1>
+            </div>
+            <div class="m-10">
+                <p class="fade-in md:mt-10 text-justify w-full pl-10 pr-20 pt-5 pb-5 mt-10 tracking-widest  border-l-4 border-green-500 bg-gray-50">
+                        Rashtriya Ispat Nigam Limited (RINL), the corporate entity of Visakhapatnam Steel Plant is a Navaratna PSE under the Ministry of Steel. Visakhapatnam Steel Plant fondly called Vizag Steel. It is the first shore based Integrated Steel Plant in the country and is known for its quality products delighting the customers. It is a market leader in long products and it caters to the needs of diverse Industrial sectors. It is the first Steel plant to be certified ISO 9001:2008 (presently 2015), ISO 14001:2004 (presently 2015), OHSAS 18001:2007 and ISO/IEC 27001:2013 Standards. It is also the first PSE to be certified ISO 50001:2011 - Energy Management Systems and has acquired CMMI Level 3 Certification for s/w development. Any kind of Construction Steel, Fabrication Steel and Special Steel is produced from RINL.
                 </p>
             </div>
-            
-            <div class="m-14 space-y-4">
+            <div class="fade-in m-20 space-y-2 text-amber-950 flex flex-col items-start pr-20 tracking-widest">
                 <div>
                 Rashtriya Ispat Nigam Limited
                 </div>
-                <div>
+                <div class="font-bold text-green-900">
                 CIN : U27109AP1982GOI003404
                 </div>
-                <div>
+                <div class="font-bold text-green-900">
                 GST Reg.No : 37AABCR0435L1ZD
                 </div>
                 <div>
@@ -89,49 +119,209 @@
         </section>
 
         
-        <section class="mt-24">
-            <h2 class="text-2xl font-semibold text-amber-950 bg-white mb-10">Our Products</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4">
+        <section class="mt-24 m-10">
+            <h2 class="text-2xl font-semibold text-green-900 bg-white border-b-2 border-green-950 pb-5 fade-in">Our Products</h2>
+            <div class="grid grid-cols-4 md:grid-cols-6 m-5 border-gray-500 p-10 fade-in">
                 <div class="text-center">
-                    <img class="h-24 mx-auto" src="{% static 'images/Angles.jpg' %}" alt="Angles">
-                    <p class="mt-2">Angles</p>
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/Angles.jpg' %}" alt="Angles">
+                    <p class="mt-2 font-semibold ">Angles</p>
                 </div>
                 <div class="text-center">
-                    <img class="h-24 mx-auto" src="{% static 'images/products.jpg' %}" alt="Billets">
-                    <p class="mt-2">Billets</p>
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/products.jpg' %}" alt="Billets">
+                    <p class="mt-2 font-semibold ">Billets</p>
                 </div>
                 <div class="text-center">
-                    <img class="h-24 mx-auto" src="{% static 'images/Channels.jpg' %}" alt="Channels">
-                    <p class="mt-2">Channels</p>
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/Channels.jpg' %}" alt="Channels">
+                    <p class="mt-2 font-semibold ">Channels</p>
                 </div>
                 <div class="text-center">
-                    <img class="h-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
-                    <p class="mt-2">Rebars</p>
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Rebars</p>
+                </div>
+                <div class="text-center">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/Angles.jpg' %}" alt="Angles">
+                    <p class="mt-2 font-semibold ">By-Products</p>
+                </div>
+                <div class="text-center">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/products.jpg' %}" alt="Billets">
+                    <p class="mt-2 font-semibold ">Exports</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/Channels.jpg' %}" alt="Channels">
+                    <p class="mt-2 font-semibold ">Forged Rounds</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Product Mix</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Wire Rod Coils</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Structurals</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Special Steel</p>
+                </div>
+                <div class="text-center mt-10">
+                    <img class="h-24 w-24 mx-auto" src="{% static 'images/rebars.jpg' %}" alt="Rebars">
+                    <p class="mt-2 font-semibold ">Plain Rounds</p>
                 </div>
             </div>
         </section>
         
         <section class="mt-12">
-            <h2 class="text-2xl font-semibold text-amber-950 bg-white mb-10">Why RINL?</h2>
-            <div class="grid grid-rows-1 md:grid-rows-3 gap-4">
-                <div class="bg-white p-4 rounded-md ">
-                    <h3 class="font-bold text-lg">Quality Reassurance</h3>
-                    <p class="text-sm">RINL ensures high-quality standards in steel production...</p>
+            <h2 class="text-2xl font-semibold text-green-800 bg-white m-10 p-5 border-b-2 border-green-800 fade-in">Why RINL?</h2>
+            <div class="grid grid-rows-1 md:grid-rows-3 gap-4 m-10">
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Quality Reassurance</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        RINL is committed to producing **high-quality, durable, and precision-engineered steel** products that meet international standards.
+                        Our products undergo **rigorous quality control checks** at every stage of production to ensure excellence.
+                    </p>
                 </div>
-                <div class="bg-white p-4 rounded-md ">
-                    <h3 class="font-bold text-lg">Diverse Product Range</h3>
-                    <p class="text-sm">Wide range of steel products including TMT bars...</p>
+        
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Diverse Product Range</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        We offer a **wide range of steel products**, including **TMT bars, structural steel, wire rods, forgings, and customized steel solutions** 
+                        for various industrial and construction needs.
+                    </p>
                 </div>
-                <div class="bg-white p-4 rounded-md ">
-                    <h3 class="font-bold text-lg">Reliable Supply</h3>
-                    <p class="text-sm">RINL ensures a steady supply of steel materials...</p>
+        
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Reliable Supply Chain</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        With **state-of-the-art production facilities and a strong logistics network**, we guarantee **timely deliveries** across India and 
+                        international markets, ensuring an uninterrupted supply of steel materials.
+                    </p>
+                </div>
+        
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Eco-Friendly Steel Production</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        RINL prioritizes **sustainable manufacturing** with eco-friendly processes, minimal waste, and reduced carbon emissions.
+                        Our facilities follow **ISO 14001:2015 Environmental Management Standards** to ensure green production.
+                    </p>
+                </div>
+        
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Trusted by Industries</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        Our steel is widely used in **infrastructure, railways, automotive, shipbuilding, power plants, and defense sectors**. 
+                        We have earned the trust of clients across industries with our **reliable and high-strength steel solutions**.
+                    </p>
+                </div>
+        
+                <div class="bg-white p-6  fade-in">
+                    <h3 class="font-bold text-lg text-green-700">Customer-Centric Approach</h3>
+                    <p class="text-sm text-gray-700 m-5">
+                        We believe in **building long-term relationships** with our customers by offering **customized steel solutions, competitive pricing, 
+                        and excellent after-sales support**. Customer satisfaction is our priority.
+                    </p>
                 </div>
             </div>
         </section>
+        
+         <!-- About Section -->
+        <section class="fade-in mt-10 mx-auto max-w-5xl p-6 bg-white">
+            <h2 class="text-3xl text-brown font-bold text-center text-green-900 mb-4">Who we are ?</h2>
+            <p class="text-green-800 text-justify mt-10">
+                Rashtriya Ispat Nigam Limited (RINL), the corporate entity of Vizag Steel, is India's **first shore-based integrated steel plant**. 
+                With a commitment to high-quality products and sustainable development, we serve various industries, ensuring excellence in every steel component produced.
+            </p>
+        </section>
+
+        <!-- Company Milestones -->
+        <section class="fade-in mt-16 bg-gray-100 py-12 text-center">
+            <h2 class="text-3xl text-green-900 font-bold">Our Milestones</h2>
+            <div class="flex flex-wrap justify-center mt-8">
+                <div class="m-4 p-6 bg-green-900 text-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-semibold ">1982</h3>
+                    <p>Established as India's first shore-based steel plant.</p>
+                </div>
+                <div class="m-4 p-6 bg-green-900 text-white shadow-md rounded-lg">2015</h3>
+                    <p>Certified with ISO 50001:2011 for energy management.</p>
+                </div>
+                <div class="m-4 p-6 bg-green-900 text-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-semibold ">2023</h3>
+                    <p>Achieved record production and global export expansion.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Applications -->
+        <section class="fade-in mt-16 mx-auto max-w-5xl p-6 bg-white">
+            <h2 class="text-3xl text-brown font-bold text-center mb-10">Industries We Serve</h2>
+            <ul class="list-disc text-gray-700 text-lg pl-8">
+                <li class="mt-5">Construction and Infrastructure</li>
+                <li class="mt-5">Automobile & Engineering</li>
+                <li class="mt-5">Railways & Transportation</li>
+                <li class="mt-5">Power Plants & Renewable Energy</li>
+                <li class="mt-5">Shipbuilding & Heavy Machinery</li>
+            </ul>
+        </section>
+
+        <!-- Sustainability & CSR -->
+        <section class="fade-in mt-16 bg-green-900 text-white py-12 text-center">
+            <h2 class="text-3xl font-bold">Sustainability & Social Responsibility</h2>
+            <p class="mt-4 mx-auto max-w-3xl">
+                Vizag Steel is committed to **eco-friendly steel production**. We invest in green energy, waste reduction, and community welfare programs, ensuring a **better future for all**.
+            </p>
+        </section>
+
+        <!-- Customer Testimonials -->
+        <section class="fade-in mt-16 mx-auto max-w-5xl p-6 bg-white shadow-lg rounded-lg">
+            <h2 class="text-3xl text-brown font-bold text-center mb-4">What Our Customers Say</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="m-4 p-4 bg-gray-100 rounded-lg shadow">
+                    <p class="italic">"Vizag Steel's quality is unmatched. Their products have been vital for our infrastructure projects!"</p>
+                    <h3 class="mt-2 text-sm font-bold">- ABC Construction Ltd.</h3>
+                </div>
+                <div class="m-4 p-4 bg-gray-100 rounded-lg shadow">
+                    <p class="italic">"Reliable, durable, and sustainable. We trust RINL for all our manufacturing needs."</p>
+                    <h3 class="mt-2 text-sm font-bold">- Global Engineering Co.</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="fade-in mt-16 bg-green-900 text-white py-12 text-center">
+            <h2 class="text-3xl font-bold">Explore Our Products</h2>
+            <p class="mt-4">Find the best steel solutions for your projects.</p>
+            <a href="{% url 'products' %}" class="mt-6 inline-block bg-white text-green-900 px-6 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-200 transition duration-300">
+                View Products
+            </a>
+        </section>
     </main>
     
-    <footer class="bg-gray-200 text-center py-6 mt-14">
+    <footer class="bg-white text-center text-green-600 py-6 mt-20">
         <p>&copy; 2024 Vizag Steel Plant | Contact: 1800 425 8878</p>
     </footer>
+
+    <script>
+        document.querySelector(".hamburger").addEventListener("click",()=>{
+            document.querySelector(".dropdown").classList.toggle("hidden");
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            let text = document.getElementById("animatedText").innerText;
+            let container = document.getElementById("animatedText");
+
+            // Clear existing text
+            container.innerText = "";
+
+            // Wrap each letter in a <span> with Tailwind styles
+            text.split("").forEach((char, index) => {
+                    let span = document.createElement("span");
+                    span.innerHTML = char === " " ? "&nbsp;" : char;  // Preserve spaces
+                    span.classList.add("letter");
+                    span.style.animationDelay = `${index * 0.2}s`; // Delay each letter
+                    container.appendChild(span);
+            });
+        });              
+    </script>
 </body>
 </html>

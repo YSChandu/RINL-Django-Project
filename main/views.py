@@ -53,7 +53,6 @@ def login(request):
     else:
        return render (request,'login.html')
 
-
 def logout(request):
     auth.logout(request)
     return redirect('/')
@@ -61,15 +60,13 @@ def logout(request):
 def cart(request):
     return render(request,'cart.html')
 
-
-
 def careers(request):
     return render(request,'careers.html')
 
 def aboutus(request):
     return render(request,'aboutus.html')
 
- # Ensures only logged-in users can access this page
+
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)  # Fetch the logged-in user's profile
     return render(request, 'profile.html', {"user": user_profile})

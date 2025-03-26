@@ -7,31 +7,30 @@
     <title>Vizag Steel Plant Products</title>
     <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
 </head>
-<body>
-    <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+<body class='opacity-0 transition-opacity duration-1000 ease-in'>
+    <header class=" fade-in sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-green-950 px-6 py-4 bg-white z-10">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-[50px] md:text-3xl bg-white font-serif pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-[50px] md:text-3xl bg-white font-bold tracking-widest text-green-900 pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
-    
         <div class="flex space-x-7 pr-4 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
-            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Home</a>
+            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-green-900 underline">Home</a>
             {%else%}
             <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-zinc-500">Home</a>
             {%endif%}
             {% if request.path == '/products/' %}
-            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Products</a>
+            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-green-900 underline">Products</a>
             {%else%}
             <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-zinc-500">Products</a>
             {%endif%}
             {% if request.path == '/careers/' %}
-            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Careers</a>
+            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-green-900 underline">Careers</a>
             {%else%}
             <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-zinc-500">Careers</a>
             {%endif%}
             {% if request.path == '/aboutus/' %}
-            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-yellow-500 underline">AboutUs</a>
+            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-green-900 underline">AboutUs</a>
             {%else%}
             <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-zinc-500">AboutUs</a>
             {%endif%}
@@ -42,108 +41,66 @@
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
                 <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
             </div>
-            
             {% else %}
-                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-green-700" href="{% url 'login' %}?next={{ request.path }}">Login</a>
             {% endif %}
         </div>
     </header>
-    <script>
-        document.querySelector(".hamburger").addEventListener("click",()=>{
-            document.querySelector(".dropdown").classList.toggle("hidden");
-        });
-    </script>
-    <!-- Yard Title -->
-     
-    <!-- Yard Title (Single Heading) -->
     <h1 class="mt-8 text-4xl font-semibold font-sans text-center text-brown mb-6">YARD</h1>
 
-    <div class="max-w-5xl mx-auto bg-white  p-6 ">
+    <div class="max-w-5xl mx-auto bg-white p-4 sm:p-6">
         {% for bin, products in bins_with_products.items %}
-        <div class="mb-6 rounded-lg shadow-md">
+        <div class="mb-6 rounded-lg shadow-md border border-gray-200">
             <!-- Bin Header -->
-             <div class="flex justify-between">
-                <h2 class="text-xl font-semibold p-3 rounded-t-md">
+            <div class="flex flex-col sm:flex-row justify-between bg-gray-100 p-3 sm:p-4 rounded-t-md">
+                <h2 class="text-lg sm:text-xl font-semibold">
                     Bin ID: {{ bin.bin_no }} - {{ bin.bin_desc }}
                 </h2>
-                <p class="text-gray-600 p-4 ">Location: {{ bin.bin_location|default:'No Location' }}</p>    
-             </div>
-            <table class="w-full border-collapse border border-gray-300 mt-3">
-                <thead>
-                    <tr class="bg-gray-800 text-white">
-                        <th class="border border-gray-300 p-2">Product ID</th>
-                        <th class="border border-gray-300 p-2">Product Name</th>
-                        <th class="border border-gray-300 p-2">Stock (Tons)</th>
-                        <th class="border border-gray-300 p-2">Grade</th>
-                        <th class="border border-gray-300 p-2">Bin ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in products %}
-                    <tr class="text-center bg-gray-50 hover:bg-gray-200 transition duration-200">
-                        <td class="border border-gray-300 p-2">{{ product.product_id }}</td>
-                        <td class="border border-gray-300 p-2">{{ product.product_desc }}</td>
-                        <td class="border border-gray-300 p-2">{{ product.stock_in_tons }}</td>
-                        <td class="border border-gray-300 p-2">{{ product.product_grade }}</td>
-                        <td class="border border-gray-300 p-2">{{ product.bin_no.bin_no }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="5" class="text-center p-4 text-gray-500">No products in this bin</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                <p class="text-gray-600 text-sm sm:text-base">Location: {{ bin.bin_location|default:'No Location' }}</p>
+            </div>
+    
+            <!-- Responsive Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300 mt-3">
+                    <thead>
+                        <tr class="bg-gray-800 text-white text-xs sm:text-sm lg:text-base">
+                            <th class="border border-gray-300 p-2">Product ID</th>
+                            <th class="border border-gray-300 p-2">Product Name</th>
+                            <th class="border border-gray-300 p-2">Stock (Tons)</th>
+                            <th class="border border-gray-300 p-2">Grade</th>
+                            <th class="border border-gray-300 p-2">Bin ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr class="text-center bg-gray-50 hover:bg-gray-200 transition duration-200">
+                            <td class="border border-gray-300 p-2">{{ product.product_id }}</td>
+                            <td class="border border-gray-300 p-2">{{ product.product_desc }}</td>
+                            <td class="border border-gray-300 p-2">{{ product.stock_in_tons }}</td>
+                            <td class="border border-gray-300 p-2">{{ product.product_grade }}</td>
+                            <td class="border border-gray-300 p-2">{{ product.bin_no.bin_no }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center p-4 text-gray-500">No products in this bin</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         {% empty %}
         <p class="text-center text-gray-500">No bins available.</p>
         {% endfor %}
     </div>
-
-    {% comment %} <main>
-        <section class="p-8">
-            <table class="w-full border-collapse border border-gray-300 shadow-lg rounded-lg overflow-hidden">
-            <tr class=" text-black">
-                <th class="px-6 py-3 text-left">Product ID</th>
-                <th class="px-6 py-3 text-left">Description</th>
-                <th class="px-6 py-3 text-left">Grade</th>
-                <th class="px-6 py-3 text-left">Stock (tons)</th>
-                <th class="px-6 py-3 text-left">Action</th>
-            </tr>
-            {% for product in products %}
-            <tr class="border-b border-gray-300 hover:bg-gray-50">
-                <td class="px-6 py-4">{{ product.product_id }}</td>
-                <td class="px-6 py-4">{{ product.product_desc }}</td>
-                <td class="px-6 py-4">{{ product.stock_in_tons }}</td>
-                <td class="px-6 py-4">{{ product.product_grade }}</td>
-                <td class="px-6 py-4">{{product.bin_no}}</td>
-                <td class="px-6 py-4">
-                {% if product.stock_in_tons > 0 %}
-                    <a href="{% url 'order_product' product.product_id %}" class= "text-blue-600 px-4 py-2 rounded-lg hover:text-blue-900 transition-colors">Order Now</a>
-                {% else %}
-                    <span class="text-red-600 font-medium">Out of Stock</span>
-                {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </table>
-        </section>
-        <section> <!-- Bin Information -->
-            <h2 class="text-2xl font-bold text-center text-brown mt-10 mb-4">Our Yard</h2>
-            <div class="max-w-2xl mx-auto bg-white shadow-lg p-6 rounded-lg">
-                <ul>
-                    {% for bin in bin %}
-                        <li class="p-2 border-b border-gray-300">
-                            <strong>Bin No:</strong> {{ bin.bin_no }} - 
-                            <span class="text-gray-600">{{ bin.bin_desc }}</span> 
-                            <small class="text-gray-500">({{ bin.bin_location|default:'No Location' }})</small>
-                        </li>
-                    {% empty %}
-                        <li class="text-gray-500 text-center p-4">No bins available</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-    </main>  {% endcomment %}
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.remove("opacity-0");
+        });        
+        document.querySelector(".hamburger").addEventListener("click",()=>{
+            document.querySelector(".dropdown").classList.toggle("hidden");
+        });
+    </script>
 </body>
 </html>

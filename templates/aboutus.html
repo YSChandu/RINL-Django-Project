@@ -6,18 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Vizag Steel Plant</title>
     <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
     <style>
-
-        .brown {
-            color: #A52A2A;
-        }
-
-
-        .bg-brown {
-            background-color: #A52A2A;
-        }
-
+        .brown { color: #A52A2A; }
+        .bg-brown { background-color: #A52A2A; }
 
         .fade-in {
             opacity: 0;
@@ -25,47 +17,38 @@
             animation: fadeInUp 1s ease-out forwards;
         }
 
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
     </style>
-
 </head>
 
-<body class="bg-gray-100 text-gray-900">
-    <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+<body class="bg-white">
+    <header class=" fade-in sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-green-950 px-6 py-4 bg-white z-10">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-[50px] md:text-3xl bg-white font-serif pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-[50px] md:text-3xl bg-white font-bold tracking-widest text-green-900 pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
     
         <div class="flex space-x-7 pr-4 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
-            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Home</a>
+            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-green-900 underline">Home</a>
             {%else%}
             <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-zinc-500">Home</a>
             {%endif%}
             {% if request.path == '/products/' %}
-            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Products</a>
+            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-green-900 underline">Products</a>
             {%else%}
             <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-zinc-500">Products</a>
             {%endif%}
             {% if request.path == '/careers/' %}
-            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Careers</a>
+            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-green-900 underline">Careers</a>
             {%else%}
             <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-zinc-500">Careers</a>
             {%endif%}
             {% if request.path == '/aboutus/' %}
-            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-yellow-500 underline">AboutUs</a>
+            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-green-900 underline">AboutUs</a>
             {%else%}
             <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-zinc-500">AboutUs</a>
             {%endif%}
@@ -76,46 +59,75 @@
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
                 <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
             </div>
-            
             {% else %}
-                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-green-700" href="{% url 'login' %}?next={{ request.path }}">Login</a>
             {% endif %}
         </div>
     </header>
 
-    <script>
-        document.querySelector(".hamburger").addEventListener("click",()=>{
-            document.querySelector(".dropdown").classList.toggle("hidden");
-        });
-    </script>
 
-    <section class="mt-8 relative bg-cover bg-center h-[50vh] flex items-center justify-center text-white" style="background-image: url('{% static 'images/steel-plant.jpg' %}');">
-        <div class="bg-black bg-opacity-50 p-8 rounded-lg">
-            <h2 class="text-4xl font-bold fade-in">About Us</h2>
-            <p class="text-lg fade-in mt-2">We are India's leading steel producer, committed to quality and sustainability.</p>
+    <section class="fade-in m-10 relative  h-60 flex items-center justify-center text-white">
+        <div class="bg-white rounded-lg">
+            <h2 class="text-4xl text-green-800 font-bold">About Us</h2>
+            <p class="text-lg text-green-700 mt-7">We are India's leading steel producer, committed to quality and sustainability.</p>
         </div>
     </section>
 
+   
     <main class="mt-8 p-6">
-        <section class="container mx-auto bg-white p-8 rounded-lg shadow-lg fade-in max-w-3xl text-center">
-            <h2 class="text-2xl font-bold text-brown underline mb-4">Who We Are</h2>
-            <p class="text-gray-700 mb-4">Welcome to Vizag Steel Plant, a leading steel producer in India. Established in 1982, we are committed to producing high-quality steel products and contributing to the nation's growth.</p>
+
+        <section class="container mx-auto bg-white p-8 fade-in max-w-3xl">
+            <h2 class="text-2xl font-bold text-brown underline mb-4 px-0 mx-0">Who we are ?</h2>
+            <p class="text-gray-700 mb-4 mt-7">Welcome to Vizag Steel Plant, a leading steel producer in India. Established in 1982, we are committed to producing high-quality steel products and contributing to the nation's growth.</p>
             <p class="text-gray-700 mb-4">Our state-of-the-art facilities and dedicated workforce ensure that we meet the highest standards of quality and efficiency.</p>
             <p class="text-gray-700">At Vizag Steel Plant, we believe in sustainable development, environmental protection, and social responsibility.</p>
         </section>
+
+        
+        <section class="container mx-auto bg-white p-8 fade-in mt-6 max-w-3xl">
+            <h2 class="text-2xl font-bold text-brown underline mb-4">Our Vision & Mission</h2>
+            <p class="text-gray-700 mb-4 mt-7">Our vision is to be a world-class steel producer known for innovation, sustainability, and excellence.</p>
+            <p class="text-gray-700">We strive to contribute to India's industrial growth while ensuring the well-being of our employees and the community.</p>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="container mx-auto bg-white p-8  fade-in mt-6 max-w-3xl">
+            <h2 class="text-2xl font-bold text-brown underline mb-4">Why Choose Us?</h2>
+            <ul class="list-disc text-left text-gray-700 mt-7">
+                <li class="m-5">High-quality steel products</li>
+                <li class="m-5">State-of-the-art technology</li>
+                <li class="m-5">Eco-friendly production</li>
+                <li class="m-5">Customer-centric approach</li>
+                <li class="m-5">Strong research and innovation</li>
+            </ul>
+        </section>
+
+        <!-- Our Achievements -->
+        <section class="container mx-auto bg-white p-8 fade-in mt-6 max-w-3xl">
+            <h2 class="text-2xl font-bold text-brown underline mb-4">Our Achievements</h2>
+            <p class="text-gray-700 mb-4 mt-7">We have been recognized as one of India's top steel producers with numerous industry awards and certifications.</p>
+            <p class="text-gray-700">Our steel is used in major infrastructure projects, contributing to the nation's growth.</p>
+        </section>
     </main>
 
-    <section class="bg-brown text-white py-12 text-center">
-        <h2 class="text-3xl font-bold fade-in">Join Us in Building the Future</h2>
-        <p class="text-lg fade-in mt-2">Explore our products and services.</p>
-        <a href="#" class="mt-4 inline-block bg-white text-brown px-6 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-200 transition duration-300 fade-in">
+    <!-- Join Us Section -->
+    <section class="bg-green-900 text-white py-12 text-center fade-in">
+        <h2 class="text-3xl font-bold mt-7">Join Us in Building the Future</h2>
+        <p class="text-lg mt-2">Explore our products and services. Together, let's create a stronger tomorrow.</p>
+        <a href="#" class="mt-4 inline-block bg-white text-green-700 px-6 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-200 transition duration-300">
             Learn More
         </a>
     </section>
 
-    <footer class="bg-gray-900 text-white text-center py-4 mt-6">
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white text-center py-4 fade-in">
         <p>&copy; 2025 Vizag Steel Plant. All rights reserved.</p>
     </footer>
 
+    <script>
+        document.querySelector(".hamburger")?.addEventListener("click",()=>{
+            document.querySelector(".dropdown").classList.toggle("hidden");
+        });
+    </script>
 </body>
 </html>

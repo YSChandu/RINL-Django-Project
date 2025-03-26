@@ -6,32 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers</title>
     <link href="{% static 'css/tailwind.min.css' %}" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <header class="sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-amber-950 px-6 py-4 bg-white">
+<body class="bg-white">
+    <header class="fade-in sticky top-0 flex flex-col space-x-4 md:flex-row justify-between items-center border-b-2 border-green-950 px-6 py-4 bg-white z-10">
         <div class="flex items-center space-x-2">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" class="h-10 w-10"> 
-            <h1 class="text-[50px] md:text-3xl bg-white font-serif pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
+            <h1 class="text-[50px] md:text-3xl bg-white font-bold tracking-widest pl-4 md:pl-11">RASHTRIYA ISPAT NIGAM LIMITED</h1>
         </div>
     
         <div class="flex space-x-7 pr-4 md:pr-12 mt-4 md:mt-0">
             {% if request.path == '/' %}
-            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Home</a>
+            <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-green-900 underline">Home</a>
             {%else%}
             <a href="{% url 'home' %}" class="text-[10px] md:text-lg text-zinc-500">Home</a>
             {%endif%}
             {% if request.path == '/products/' %}
-            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Products</a>
+            <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-green-900 underline">Products</a>
             {%else%}
             <a href="{% url 'products' %}" class="text-[10px] md:text-lg text-zinc-500">Products</a>
             {%endif%}
             {% if request.path == '/careers/' %}
-            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-yellow-500 underline">Careers</a>
+            <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-green-900 underline">Careers</a>
             {%else%}
             <a href="{% url 'careers' %}" class="text-[10px] md:text-lg text-zinc-500">Careers</a>
             {%endif%}
             {% if request.path == '/aboutus/' %}
-            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-yellow-500 underline">AboutUs</a>
+            <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-green-900 underline">AboutUs</a>
             {%else%}
             <a href="{% url 'aboutus' %}" class="text-[10px] md:text-lg text-zinc-500">AboutUs</a>
             {%endif%}
@@ -42,9 +60,8 @@
                 <a href="{% url 'profile' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Orders</a>
                 <a href="{% url 'logout' %}" class="py-2 px-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:border hover:border-black">Logout</a>
             </div>
-            
             {% else %}
-                <a class="mr-14 bg-white text-lg rounded-lg hover:text-yellow-500" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                <a class="mr-14 bg-white text-lg rounded-lg hover:text-green-700" href="{% url 'login' %}?next={{ request.path }}">Login</a>
             {% endif %}
         </div>
     </header>
@@ -53,27 +70,95 @@
             document.querySelector(".dropdown").classList.toggle("hidden");
         });
     </script>
-    <main class="container mx-auto p-4">
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4 text-brown-900">Why Work With Us?</h2>
-            <p class="text-gray-700">We offer a dynamic work environment, competitive salaries, and opportunities for growth and development.</p>
+    <main class="container mx-auto p-6">
+        <!-- Who We Are -->
+        <section class="fade-in mb-12 bg-white p-6 mt-12 ">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Who We Are</h2>
+            <p class="text-gray-700 text-lg">
+                RINL is one of India's leading steel producers, known for innovation, sustainability, and excellence. 
+                We believe in **building a better tomorrow** through high-quality steel products and a strong workforce.
+            </p>
         </section>
-        <section>
-            <h2 class="text-2xl font-semibold mb-4 text-brown-900">Current Openings</h2>
-            <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                <h3 class="text-xl font-bold text-brown-900">Software Engineer</h3>
-                <p class="text-gray-700">We are looking for a skilled software engineer to join our team. Experience with Django and Tailwind CSS is a plus.</p>
-                <button class="mt-2 bg-yellow-500 text-brown-900 px-4 py-2 rounded">Apply Now</button>
+
+        <!-- Our Values -->
+        <section class="fade-in mb-12 bg-white  p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Our Values</h2>
+            <ul class="list-disc text-gray-700 text-lg pl-8">
+                <li>**Integrity** – We uphold the highest ethical standards.</li>
+                <li>**Innovation** – Constantly improving and evolving.</li>
+                <li>**Sustainability** – Commitment to eco-friendly steel production.</li>
+                <li>**Customer Focus** – Delivering excellence in every product.</li>
+            </ul>
+        </section>
+
+        <!-- Career Growth & Training Programs -->
+        <section class="fade-in mb-12 bg-white p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Career Growth & Training Programs</h2>
+            <p class="text-gray-700 text-lg">
+                We invest in **continuous learning** and **professional development** through:
+            </p>
+            <ul class="list-disc text-gray-700 text-lg pl-8">
+                <li>Leadership Development Programs</li>
+                <li>Technical Skill Enhancement Training</li>
+                <li>Workshops & Seminars by Industry Experts</li>
+            </ul>
+        </section>
+
+        <!-- Diversity & Inclusion -->
+        <section class="fade-in mb-12 bg-white p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Diversity & Inclusion</h2>
+            <p class="text-gray-700 text-lg">
+                We believe in fostering an **inclusive and diverse** workplace where everyone is treated with **respect and fairness**.  
+                We encourage hiring from all backgrounds, including **women in leadership, differently-abled individuals, and diverse ethnicities**.
+            </p>
+        </section>
+
+        <!-- Employee Testimonials -->
+        <section class="fade-in mb-12 bg-white p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Employee Testimonials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="italic">"RINL has given me **amazing opportunities** to grow in my career. The work environment is highly supportive!"</p>
+                    <h3 class="mt-2 text-sm font-bold text-green-900">- Aman K., Senior Engineer</h3>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="italic">"I love working at RINL because of its **focus on innovation and sustainability**. Great place to build a future!"</p>
+                    <h3 class="mt-2 text-sm font-bold text-green-900">- Priya S., Product Manager</h3>
+                </div>
             </div>
-            <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                <h3 class="text-xl font-bold text-brown-900">Product Manager</h3>
-                <p class="text-gray-700">We need a product manager to help us build and improve our products. Strong leadership and communication skills are required.</p>
-                <button class="mt-2 bg-yellow-500 text-brown-900 px-4 py-2 rounded">Apply Now</button>
+        </section>
+
+        <!-- Internships & Graduate Programs -->
+        <section class="fade-in mb-12 bg-white p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">Internships & Graduate Programs</h2>
+            <p class="text-gray-700 text-lg">
+                We offer **internship and graduate trainee programs** to help young professionals kickstart their careers in the steel industry. 
+                Work with **industry leaders, gain hands-on experience, and build your network!**
+            </p>
+        </section>
+
+        <!-- Frequently Asked Questions (FAQs) -->
+        <section class="fade-in mb-12 bg-white p-6">
+            <h2 class="text-3xl font-semibold text-green-900 mb-4">FAQs</h2>
+            <div class="bg-gray-100 p-4 rounded-lg mb-2">
+                <h3 class="font-bold text-green-900">How do I apply for a job at RINL?</h3>
+                <p class="text-gray-700">Visit our **Careers** page, select a job, and click **Apply Now**.</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg mb-2">
+                <h3 class="font-bold text-green-900">Do you offer remote work opportunities?</h3>
+                <p class="text-gray-700">Yes, some roles offer hybrid or remote work options.</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg mb-2">
+                <h3 class="font-bold text-green-900">What benefits does RINL offer?</h3>
+                <p class="text-gray-700">Healthcare, career development, bonuses, and more!</p>
             </div>
         </section>
     </main>
-    <footer class="mt-96 bg-brown-900 text-yellow-500 p-4 text-center">
-        <p>&copy; 2023 Our Company. All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer class="fade-in bg-green-900 text-white p-6 text-center mt-16">
+        <p>&copy; 2024 Vizag Steel Plant. All rights reserved.</p>
+        <p>📞 Contact Us: 1800 425 8878 | 📧 Email: careers@vizagsteel.com</p>
     </footer>
 </body>
 </html>
