@@ -10,6 +10,7 @@
     <style>
         .brown { color: #A52A2A; }
         .bg-brown { background-color: #A52A2A; }
+        .metal{ color: #232F2E; }
 
         .fade-in {
             opacity: 0;
@@ -21,6 +22,7 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
     </style>
 </head>
 
@@ -66,34 +68,38 @@
     </header>
 
 
-    <section class="fade-in m-10 relative  h-60 flex items-center justify-center text-white">
-        <div class="bg-white rounded-lg">
-            <h2 class="text-4xl text-green-800 font-bold">About Us</h2>
-            <p class="text-lg text-green-700 mt-7">We are India's leading steel producer, committed to quality and sustainability.</p>
+    <section class="fade-in m-4 relative  h-60 ">
+        <div class="bg-white rounded-lg flex items-center justify-center">
+            <h2 class="text-4xl text-green-800 font-bold p-5">About Us</h2>
+        </div>
+        <div class="bg-white rounded-lg flex items-center justify-center">
+            <p class="text-lg mt-7">We are India's leading steel producer, committed to quality and sustainability.</p>
         </div>
     </section>
 
    
-    <main class="mt-8 p-6">
+    <main class="mb-8 mr-8 ml-8 mt-3 ">
 
-        <section class="container mx-auto bg-white p-8 fade-in max-w-3xl">
-            <h2 class="text-2xl font-bold text-brown underline mb-4 px-0 mx-0">Who we are ?</h2>
-            <p class="text-gray-700 mb-4 mt-7">Welcome to Vizag Steel Plant, a leading steel producer in India. Established in 1982, we are committed to producing high-quality steel products and contributing to the nation's growth.</p>
-            <p class="text-gray-700 mb-4">Our state-of-the-art facilities and dedicated workforce ensure that we meet the highest standards of quality and efficiency.</p>
-            <p class="text-gray-700">At Vizag Steel Plant, we believe in sustainable development, environmental protection, and social responsibility.</p>
+        <section class="container mx-auto bg-white p-8 fade-in ">
+            <h2 class="text-2xl font-bold text-green-900 underline mb-4 px-0 mx-0">Who We Are ?</h2>
+            <div class="m-4 text-lg">
+                <p class="text-gray-700 mb-4 mt-7">Welcome to Vizag Steel Plant, a leading steel producer in India. Established in 1982, we are committed to producing high-quality steel products and contributing to the nation's growth.</p>
+                <p class="text-gray-700 mb-4">Our state-of-the-art facilities and dedicated workforce ensure that we meet the highest standards of quality and efficiency.</p>
+                <p class="text-gray-700">At Vizag Steel Plant, we believe in sustainable development, environmental protection, and social responsibility.</p>
+            </div>
         </section>
 
-        
-        <section class="container mx-auto bg-white p-8 fade-in mt-6 max-w-3xl">
-            <h2 class="text-2xl font-bold text-brown underline mb-4">Our Vision & Mission</h2>
+        <section class="container mx-auto bg-white p-8 fade-in mt-6 ">
+            <h2 class="text-2xl font-bold text-green-900 underline mb-4">Our Vision & Mission</h2>
+            <div class="m-5 text-lg">
             <p class="text-gray-700 mb-4 mt-7">Our vision is to be a world-class steel producer known for innovation, sustainability, and excellence.</p>
             <p class="text-gray-700">We strive to contribute to India's industrial growth while ensuring the well-being of our employees and the community.</p>
+            </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <section class="container mx-auto bg-white p-8  fade-in mt-6 max-w-3xl">
-            <h2 class="text-2xl font-bold text-brown underline mb-4">Why Choose Us?</h2>
-            <ul class="list-disc text-left text-gray-700 mt-7">
+        <section class="container mx-auto bg-white p-8  fade-in mt-6 ">
+            <h2 class="text-2xl font-bold text-green-900 text-brown underline mb-4">Why Choose Us?</h2>
+            <ul class="list-disc text-left m-7">
                 <li class="m-5">High-quality steel products</li>
                 <li class="m-5">State-of-the-art technology</li>
                 <li class="m-5">Eco-friendly production</li>
@@ -102,24 +108,87 @@
             </ul>
         </section>
 
-        <!-- Our Achievements -->
-        <section class="container mx-auto bg-white p-8 fade-in mt-6 max-w-3xl">
-            <h2 class="text-2xl font-bold text-brown underline mb-4">Our Achievements</h2>
-            <p class="text-gray-700 mb-4 mt-7">We have been recognized as one of India's top steel producers with numerous industry awards and certifications.</p>
-            <p class="text-gray-700">Our steel is used in major infrastructure projects, contributing to the nation's growth.</p>
+        <section class="container mx-auto bg-white p-8 fade-in mt-6 ">
+            <h2 class="text-2xl font-bold text-green-900 underline mb-4 ">Our Achievements</h2>
+            <div class="m-7">
+            
+            <p class=" mb-4 mt-7">We have been recognized as one of India's top steel producers with numerous industry awards and certifications.</p>
+            <p>Our steel is used in major infrastructure projects, contributing to the nation's growth.</p>
+            </div>
         </section>
     </main>
 
-    <!-- Join Us Section -->
+  
     <section class="bg-green-900 text-white py-12 text-center fade-in">
         <h2 class="text-3xl font-bold mt-7">Join Us in Building the Future</h2>
         <p class="text-lg mt-2">Explore our products and services. Together, let's create a stronger tomorrow.</p>
         <a href="#" class="mt-4 inline-block bg-white text-green-700 px-6 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-gray-200 transition duration-300">
             Learn More
         </a>
+  
+    </section>
+    <section class="mt-10">
+        <h2 class="text-green-900 text-center text-2xl"><strong>Meet Our Team</strong></h2>
+        <div class="flex flex-column gap-4 justify-center items-center">
+            <div class="flex justify-center items-center p-10">
+                <img src="{% static 'images\me.jpg' %}" alt="Team Lead" class="h-56 w-56 rounded-full">
+            </div>
+            <div class="text-start p-5 text-xl w-1/3">
+                <h3 class="mb-5">Yarrapothu Sai Chandu </h3>
+                <p><strong>Role:</strong> Frontend and Backend Developer -Team Lead </p>
+            </div>
+            <div class="flex justify-around items-center w-1/3">
+                <a href = "https://www.linkedin.com/in/yarrapothu-sai-chandu-ab45b4244/" target = "blank" class = "linkedin-link"> LinkedIn</a>
+                <a href = "https://github.com/YSChandu" target = "blank" class = "linkedin-link">Github</a>
+                <a>yarrapothusaichandu@gmail.com</a>
+            </div>
+        </div>
+        
+          <div class="flex flex-column gap-4 justify-center items-center">
+            <div class="flex justify-center items-center p-10">
+                <img src="{% static 'images\me.jpg' %}" alt="Team Lead" class="h-56 w-56 rounded-full">
+            </div>
+            <div class="text-start p-5 text-xl w-1/3 ">
+                <h3 class="mb-5">Kolli Lakshmi</h3>
+                <p><strong>Role:</strong> Frontend Developer </p>
+            </div>
+            <div class="flex justify-around items-center w-1/3">
+                <a href = "https://www.linkedin.com/in/yarrapothu-sai-chandu-ab45b4244/" target = "blank" class = "linkedin-link"> LinkedIn</a>
+                <a href = "https://github.com/YSChandu" target = "blank" class = "linkedin-link">Github</a>
+                <a>kollilakshmi@gmail.com</a>
+            </div>
+          </div>
+          <div class="flex flex-column gap-4 justify-center items-center">
+            <div class="flex justify-center items-center p-10">
+                <img src="{% static 'images\me.jpg' %}" alt="Team Lead" class="h-56 w-56 rounded-full">
+            </div>
+            <div class="text-start p-5 text-xl w-1/3 ">
+                <h3 class="mb-5">Subramania Kavitha Priya</h3>
+                <p><strong>Role:</strong> Frontend Developer </p>
+            </div>
+            <div class="flex justify-around items-center w-1/3">
+                <a href = "https://www.linkedin.com/in/yarrapothu-sai-chandu-ab45b4244/" target = "blank" class = "linkedin-link"> LinkedIn</a>
+                <a href = "https://github.com/YSChandu" target = "blank" class = "linkedin-link">Github</a>
+                <a>kavithapriya@gmail.com</a>
+            </div>
+        </div>
+        <div class="flex flex-column gap-4 justify-center items-center">
+            <div class="flex justify-center items-center p-10">
+                <img src="{% static 'images\me.jpg' %}" alt="Team Lead" class="h-56 w-56 rounded-full">
+            </div>
+            <div class="text-start p-5 text-xl w-1/3">
+                <h3 class="mb-5">Rayanuthala Doni Kowshik</h3>
+                <p><strong>Role:</strong> Backend Developer </p>
+            </div>
+            <div class="flex justify-around items-center w-1/3">
+                <a href = "https://www.linkedin.com/in/yarrapothu-sai-chandu-ab45b4244/" target = "blank" class = "linkedin-link"> LinkedIn</a>
+                <a href = "https://github.com/YSChandu" target = "blank" class = "linkedin-link">Github</a>
+                <a>yarrapothusaichandu@gmail.com</a>
+            </div>
+          </div>
     </section>
 
-    <!-- Footer -->
+
     <footer class="bg-green-900 text-white text-center py-4 fade-in">
         <p>&copy; 2025 Vizag Steel Plant. All rights reserved.</p>
     </footer>
