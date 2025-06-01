@@ -4,16 +4,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-omg7peaws#sxx5r@i*v0x(n4r612fb3=w#37r8bk@3g@0nmpuy"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1",,"https://rinl-django-project.onrender.com"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1","https://rinl-django-project.onrender.com"]
 DEBUG = False
 
 
