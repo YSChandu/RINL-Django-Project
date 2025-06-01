@@ -11,6 +11,5 @@ urlpatterns = [
     path('careers/', views.careers, name="careers"),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('profile/', views.profile, name='profile'),
-    path('demo/',views.demo,name='demo'),
     path('order/<str:product_id>/', views.order_product, name='order_product')
 ]

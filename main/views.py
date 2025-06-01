@@ -68,7 +68,7 @@ def aboutus(request):
 
 
 def profile(request):
-    user_profile = UserProfile.objects.get(user=request.user)  # Fetch the logged-in user's profile
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)  # Fetch the logged-in user's profile
     return render(request, 'profile.html', {"user": user_profile})
 
 
@@ -118,5 +118,3 @@ def order_product(request, product_id):
     return redirect('products')
 
 
-def demo(request):
-    return render(request,'demo.html')
