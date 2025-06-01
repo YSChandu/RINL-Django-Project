@@ -1,23 +1,10 @@
-"""
-WSGI config for RINL project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
-"""
-
 import os
-
-if not os.path.exists("/staticfiles"):
-    os.makedirs(os.path.join(BASE_DIR, "staticfiles"), exist_ok=True)
-
-
+from pathlib import Path
 from django.core.wsgi import get_wsgi_application
-from whitenoise import WhiteNoise
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "RINL.settings")
+BASE_DIR = Path(__file__).resolve().parent.parent
+os.makedirs(os.path.join(BASE_DIR, "staticfiles"), exist_ok=True)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RINL.settings')
 
 application = get_wsgi_application()
-
-application = WhiteNoise(application, root="/staticfiles")
